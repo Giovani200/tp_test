@@ -1,30 +1,30 @@
-// 1. Créer un utilisateur (POST /users)
-// 2. Lister tous les utilisateurs (GET /users)
-
+// src/server.js
 const express = require("express");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
-const path = require("path");
+const cors = require("cors");
 const connecterDB = require("./config/database");
+const utilisateurRoutes = require("./routes/utilisateurRoutes");
 
 // Charger les variables d'environnement
 dotenv.config();
 
-// Connecter à la base de données
+// Connecter à la BDD
 connecterDB();
-// Créer une instance d'Express
+
+// Créer l'app Express
 const app = express();
 
-// Middleware CORS et parsing JSON
+// Middlewares
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.json()); 
+app.use(express.json());
 
-// Serveur API
-app.use("/api/utilisateurs", require("./routes/utilisateurRoutes"));
-
-
+// Montée des routes
+app.use("/api/utilisateurs", utilisateurRoutes);
 
 // Démarrer le serveur
-
-app.listen(process.env.PORT || 8008, () => console.log(`Serveur démarré sur le port ${process.env.PORT || 8008} : http://localhost:${process.env.PORT || 8008}/`));
+const PORT = process.env.PORT || 8008;
+app.listen(PORT, () => {
+  console.log(`Serveur démarré sur http://localhost:${PORT}/`);
+});
