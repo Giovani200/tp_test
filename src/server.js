@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const connecterDB = require("./config/database");
 const utilisateurRoutes = require("./routes/utilisateurRoutes");
+const path = require("path");
 
 // Charger les variables d'environnement
 dotenv.config();
@@ -22,6 +23,8 @@ app.use(express.json());
 
 // Montée des routes
 app.use("/api/utilisateurs", utilisateurRoutes);
+// ficher frontend
+app.use(express.static(path.join(__dirname, "../frontend")));
 
 // Démarrer le serveur
 const PORT = process.env.PORT || 8008;
