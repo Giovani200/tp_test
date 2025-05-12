@@ -1,0 +1,124 @@
+openapi: 3.0.0
+info:
+  title: API de Gestion des Utilisateurs
+  description: API pour créer et lister des utilisateurs
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000
+    description: Serveur de développement
+
+tags:
+  - name: Utilisateurs
+    description: Opérations liées aux utilisateurs
+
+paths:
+  /users:
+    post:
+      tags:
+        - Utilisateurs
+      summary: Créer un nouvel utilisateur
+      description: Crée un nouvel utilisateur avec les informations fournies
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - nom
+                - prenom
+                - email
+              properties:
+                nom:
+                  type: string
+                  description: Nom de l'utilisateur
+                  example: Dubois
+                prenom:
+                  type: string
+                  description: Prénom de l'utilisateur
+                  example: Marie
+                email:
+                  type: string
+                  format: email
+                  description: Adresse email de l'utilisateur
+                  example: marie.dubois@email.com
+      responses:
+        '201':
+          description: Utilisateur créé avec succès
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifiant unique de l'utilisateur
+                  nom:
+                    type: string
+                  prenom:
+                    type: string
+                  email:
+                    type: string
+        '400':
+          description: Données invalides
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Les données fournies sont invalides"
+
+    get:
+      tags:
+        - Utilisateurs
+      summary: Liste tous les utilisateurs
+      description: Récupère la liste de tous les utilisateurs enregistrés
+      responses:
+        '200':
+          description: Liste des utilisateurs récupérée avec succès
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    nom:
+                      type: string
+                    prenom:
+                      type: string
+                    email:
+                      type: string
+        '500':
+          description: Erreur serveur
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Erreur lors de la récupération des utilisateurs"
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Identifiant unique de l'utilisateur
+        nom:
+          type: string
+          description: Nom de l'utilisateur
+        prenom:
+          type: string
+          description: Prénom de l'utilisateur
+        email:
+          type: string
+          description: Email de l'utilisateur
+        
