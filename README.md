@@ -51,7 +51,7 @@ PORT=3000
 ```bash
 npm start
 ```
-L'application sera disponible sur http://localhost:3000
+L'application sera disponible sur http://localhost:5000
 
 ## Tests
 
@@ -79,7 +79,7 @@ npm run test:e2e
 
 **Requête :**
 ```bash
-curl -X POST http://localhost:3000/ \
+curl -X POST http://localhost:5000/ \
   -H "Content-Type: application/json" \
   -d '{
     "nom": "Dubois",
@@ -102,7 +102,7 @@ curl -X POST http://localhost:3000/ \
 
 **Requête :**
 ```bash
-curl http://localhost:3000/api/utilisateurs
+curl http://localhost:5000/api/utilisateurs
 ```
 
 **Réponse :**
@@ -118,6 +118,6 @@ curl http://localhost:3000/api/utilisateurs
 ```
 
 ### Interface Web
-Vous pouvez également utiliser l'interface web disponible sur http://localhost:3000 pour :
+Vous pouvez également utiliser l'interface web disponible sur http://localhost:5000 pour :
 - Remplir le formulaire de création d'utilisateur
 - Visualiser la liste des utilisateurs existants
