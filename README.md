@@ -121,3 +121,18 @@ curl http://localhost:5000/api/utilisateurs
 Vous pouvez également utiliser l'interface web disponible sur http://localhost:5000 pour :
 - Remplir le formulaire de création d'utilisateur
 - Visualiser la liste des utilisateurs existants
+
+## Documentation Swagger
+
+Pour visualiser la documentation de l'API, vous avez plusieurs options :
+
+### 1. Utiliser Swagger Editor en ligne
+1. Visitez [Swagger Editor](https://editor.swagger.io/)
+2. Copiez le contenu du fichier `swagger.yaml`
+3. Collez-le dans l'éditeur en ligne
+
+### 2. Extension VS Code
+1. Installer l'extension "Swagger Viewer" dans VS Code
+2. Ouvrir le fichier `swagger.yaml`
+3. Appuyer sur `Alt+Shift+P`
+4. Taper "Swagger Viewer: Preview Swagger" et valider
